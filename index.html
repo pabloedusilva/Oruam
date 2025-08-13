@@ -20,7 +20,6 @@
         }
 
         body {
-            background-size: cover;
             background-position: center center;
             background-attachment: fixed;
             background-repeat: no-repeat;
@@ -35,12 +34,15 @@
         body.desktop {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/Background1.png');
             background-attachment: fixed;
+            background-size: cover;
         }
 
-        /* Background para mobile - otimizado para telas pequenas */
+        /* Background para mobile - tamanho fixo original da imagem */
         body.mobile {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/Background2.png');
             background-attachment: scroll;
+            background-size: auto;
+            background-position: center center;
         }
 
         header {
@@ -82,7 +84,7 @@
         .subtitle {
             font-size: 1.2rem;
             opacity: 0.9;
-        }
+        }   
 
         main {
             flex: 1;
@@ -111,27 +113,6 @@
             margin-bottom: 1.5rem;
             line-height: 1.6;
             font-size: 1.1rem;
-        }
-
-        .progress-container {
-            width: 100%;
-            background-color: var(--secondary);
-            border-radius: 5px;
-            margin: 2rem 0;
-            height: 30px;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background-color: var(--primary);
-            width: 0%;
-            transition: width 1s ease-in-out;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.9rem;
         }
 
         .donation-section {
@@ -241,6 +222,228 @@
             font-weight: bold;
         }
 
+        .ranking-section {
+            background: rgba(26, 26, 26, 0.3);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 500px;
+            width: 100%;
+            margin-top: 2rem;
+            border-top: 5px solid var(--accent);
+        }
+
+        .ranking-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .ranking-icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--accent);
+        }
+
+        .ranking-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .ranking-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .ranking-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .ranking-position {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+        }
+
+        .position-number {
+            background: var(--primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .position-number.top-1 {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #1a1a1a;
+        }
+
+        .position-number.top-2 {
+            background: linear-gradient(45deg, #c0c0c0, #e5e5e5);
+            color: #1a1a1a;
+        }
+
+        .position-number.top-3 {
+            background: linear-gradient(45deg, #cd7f32, #daa520);
+            color: white;
+        }
+
+        .donor-info {
+            flex: 1;
+        }
+
+        .donor-name {
+            font-weight: bold;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .donor-location {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .donation-amount {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .crown-icon {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 20px;
+            height: 20px;
+            fill: #ffd700;
+        }
+
+        .ranking-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .live-donors-section {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .live-donors-title {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .live-icon {
+            width: 16px;
+            height: 16px;
+            fill: #ff4444;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .slot-container {
+            height: 60px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .slot-reel {
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.8s ease-in-out;
+            will-change: transform;
+        }
+
+        .slot-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.8rem 1rem;
+            height: 60px;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .slot-item.active {
+            background: rgba(168, 218, 220, 0.1);
+            border: 1px solid rgba(168, 218, 220, 0.3);
+        }
+
+        .slot-donor-info {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .slot-position {
+            background: var(--primary);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .slot-name {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .slot-amount {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
         footer {
             text-align: center;
             padding: 1rem;
@@ -334,8 +537,35 @@
                 font-size: 1rem;
             }
             
-            .campaign-info, .donation-section {
+            .campaign-info, .donation-section, .ranking-section {
                 padding: 1.5rem;
+            }
+
+            .ranking-section {
+                margin-top: 1.5rem;
+            }
+
+            .ranking-title {
+                font-size: 1.5rem;
+            }
+
+            .ranking-item {
+                padding: 0.8rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .donor-name {
+                font-size: 0.9rem;
+            }
+
+            .donation-amount {
+                font-size: 1rem;
+            }
+
+            .position-number {
+                width: 25px;
+                height: 25px;
+                font-size: 0.8rem;
             }
 
             .header-content {
@@ -386,13 +616,7 @@
         <section class="campaign-info">
             <h2>Juntos pela liberdade de Oruam</h2>
             <p>Oruam, um dos maiores nomes do trap nacional, precisa da nossa ajuda. Contribua com qualquer valor para ajudar na causa pela sua liberdade.</p>
-            <p>Cada doação nos aproxima do objetivo final. Sua contribuição faz a diferença!</p>
-            
-            <div class="progress-container">
-                <div class="progress-bar" id="progressBar">25%</div>
-            </div>
-            
-            <p>Meta: R$ 250.000,00 | Arrecadado: R$ 62.500,00</p>
+            <p>#soutaooruam</p>
         </section>
 
         <section class="donation-section">
@@ -423,6 +647,72 @@
             
             <div class="donors-count">
                 <p>Já temos <span>1.247</span> apoiadores nesta causa!</p>
+            </div>
+        </section>
+
+        <section class="ranking-section">
+            <h3 class="ranking-title">
+                <svg class="ranking-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M6.5 21L3 18.5V11h3.5v10zm5.25 0L8.5 18.5V8h3.25v13zm5.25 0L13.75 18.5V3H17v18zM21 21v-9h-3v9h3z"/>
+                </svg>
+                Top Apoiadores
+            </h3>
+            
+            <ul class="ranking-list">
+                <li class="ranking-item">
+                    <svg class="crown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M5 16L3 12l3 1 3-4 3 4 3-1-2 4H5zm2.5-7L4 6l1.5 3h2zm9 0h2L20 6l-3.5 3z"/>
+                    </svg>
+                    <div class="ranking-position">
+                        <span class="position-number top-1">1</span>
+                        <div class="donor-info">
+                            <div class="donor-name">Mc Cardique</div>
+                            <div class="donor-location">São Paulo - SP</div>
+                        </div>
+                    </div>
+                    <div class="donation-amount">R$ 15.000,00</div>
+                </li>
+                
+                <li class="ranking-item">
+                    <div class="ranking-position">
+                        <span class="position-number top-2">2</span>
+                        <div class="donor-info">
+                            <div class="donor-name">Tropa do Complexo</div>
+                            <div class="donor-location">Rio de Janeiro - RJ</div>
+                        </div>
+                    </div>
+                    <div class="donation-amount">R$ 8.500,00</div>
+                </li>
+                
+                <li class="ranking-item">
+                    <div class="ranking-position">
+                        <span class="position-number top-3">3</span>
+                        <div class="donor-info">
+                            <div class="donor-name">Fé na Quebrada</div>
+                            <div class="donor-location">Belo Horizonte - MG</div>
+                        </div>
+                    </div>
+                    <div class="donation-amount">R$ 5.200,00</div>
+                </li>
+            </ul>
+            
+            <div class="live-donors-section">
+                <h4 class="live-donors-title">
+                    <svg class="live-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                    Apoiadores em Tempo Real
+                </h4>
+                
+                <div class="slot-container">
+                    <div class="slot-reel" id="slotReel">
+                        <!-- Items serão gerados pelo JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ranking-footer">
+                <p>🏆 Ranking atualizado em tempo real</p>
             </div>
         </section>
     </main>
@@ -502,7 +792,6 @@
             const pixKey = document.getElementById('pixKey');
             const notification = document.getElementById('notification');
             const copySound = document.getElementById('copySound');
-            const progressBar = document.getElementById('progressBar');
             const donationInput = document.getElementById('donationInput');
             const oruamCharacter = document.getElementById('oruamCharacter');
             const oruamText = document.getElementById('oruamText');
@@ -529,6 +818,59 @@
             
             // Alterar texto a cada 3 segundos
             setInterval(changeOruamText, 3000);
+
+            // Sistema de Exibição Sequencial para Ranking
+            const slotReel = document.getElementById('slotReel');
+            let currentDonorIndex = 0;
+            
+            // Lista de doadores para exibição sequencial
+            const allDonors = [
+                { name: 'Gang do Trap', location: 'Salvador - BA', amount: 'R$ 3.750,00', position: 4 },
+                { name: 'Família Oruam', location: 'Brasília - DF', amount: 'R$ 2.900,00', position: 5 },
+                { name: 'Quebrada Unite', location: 'Fortaleza - CE', amount: 'R$ 2.150,00', position: 6 },
+                { name: 'Trap Nation', location: 'Porto Alegre - RS', amount: 'R$ 1.800,00', position: 7 },
+                { name: 'Flow Squad', location: 'Recife - PE', amount: 'R$ 1.650,00', position: 8 },
+                { name: 'Rima Pesada', location: 'Curitiba - PR', amount: 'R$ 1.420,00', position: 9 },
+                { name: 'Beat Makers', location: 'Goiânia - GO', amount: 'R$ 1.200,00', position: 10 },
+                { name: 'MC da Favela', location: 'Manaus - AM', amount: 'R$ 1.050,00', position: 11 },
+                { name: 'Ritmo Urbano', location: 'Belém - PA', amount: 'R$ 950,00', position: 12 },
+                { name: 'Som da Rua', location: 'Natal - RN', amount: 'R$ 800,00', position: 13 },
+                { name: 'Batida Forte', location: 'João Pessoa - PB', amount: 'R$ 750,00', position: 14 },
+                { name: 'Grave Pesado', location: 'Maceió - AL', amount: 'R$ 680,00', position: 15 },
+                { name: 'Flow Livre', location: 'Aracaju - SE', amount: 'R$ 620,00', position: 16 },
+                { name: 'Rima Real', location: 'Teresina - PI', amount: 'R$ 580,00', position: 17 },
+                { name: 'Beat Street', location: 'São Luis - MA', amount: 'R$ 520,00', position: 18 },
+                { name: 'Trap Family', location: 'Vitória - ES', amount: 'R$ 480,00', position: 19 },
+                { name: 'Urban Style', location: 'Campo Grande - MS', amount: 'R$ 450,00', position: 20 }
+            ];
+            
+            // Função para criar item do slot
+            function createSlotItem(donor, isActive = false) {
+                return `
+                    <div class="slot-item ${isActive ? 'active' : ''}">
+                        <div class="slot-donor-info">
+                            <span class="slot-position">${donor.position}</span>
+                            <div class="slot-name">${donor.name}</div>
+                        </div>
+                        <div class="slot-amount">${donor.amount}</div>
+                    </div>
+                `;
+            }
+            
+            // Função para atualizar exibição
+            function updateDisplay() {
+                const currentDonor = allDonors[currentDonorIndex];
+                slotReel.innerHTML = createSlotItem(currentDonor, true);
+                
+                // Próximo doador
+                currentDonorIndex = (currentDonorIndex + 1) % allDonors.length;
+            }
+            
+            // Inicializar exibição
+            updateDisplay();
+            
+            // Atualizar a cada 2 segundos
+            setInterval(updateDisplay, 2000);
             
             // Lista de sons aleatórios do Oruam
             const oruamSounds = [
@@ -559,11 +901,6 @@
                     this.style.transform = '';
                 }, 100);
             });
-            
-            // Animar barra de progresso
-            setTimeout(() => {
-                progressBar.style.width = '25%';
-            }, 500);
             
             // Formatar input de doação
             donationInput.addEventListener('input', function(e) {
