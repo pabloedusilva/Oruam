@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liberte Oruam - Vaquinha Online</title>
+    <title>Souta Oruam - Vaquinha Online</title>
     <style>
         :root {
             --primary: #e63946;
@@ -20,14 +20,27 @@
         }
 
         body {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('oruam-background.jpg');
             background-size: cover;
-            background-position: center;
+            background-position: center center;
             background-attachment: fixed;
+            background-repeat: no-repeat;
             color: var(--light);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            transition: background-image 0.3s ease-in-out;
+        }
+
+        /* Background para desktop - otimizado para telas grandes */
+        body.desktop {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/Background1.png');
+            background-attachment: fixed;
+        }
+
+        /* Background para mobile - otimizado para telas pequenas */
+        body.mobile {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/Background2.png');
+            background-attachment: scroll;
         }
 
         header {
@@ -84,10 +97,13 @@
         .campaign-info {
             max-width: 800px;
             margin-bottom: 3rem;
-            background-color: rgba(26, 26, 26, 0.9);
+            background: rgba(26, 26, 26, 0.3);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-left: 5px solid var(--primary);
         }
 
@@ -119,10 +135,13 @@
         }
 
         .donation-section {
-            background-color: rgba(26, 26, 26, 0.9);
+            background: rgba(26, 26, 26, 0.3);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             max-width: 500px;
             width: 100%;
             border-top: 5px solid var(--primary);
@@ -357,7 +376,7 @@
         <div class="header-content">
             <img src="Oruam (1).png" alt="Logo Oruam" class="header-image">
             <div class="header-text">
-                <h1>Liberte Oruam</h1>
+                <h1>Souta o Oruam</h1>
                 <p class="subtitle">Cantor não é bandido</p>
             </div>
         </div>
@@ -426,6 +445,58 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Função para gerenciar background responsivo
+            function updateBackground() {
+                const body = document.body;
+                const screenWidth = window.innerWidth;
+                
+                // Remover classes existentes
+                body.classList.remove('desktop', 'mobile');
+                
+                if (screenWidth <= 768) {
+                    // Dispositivos móveis - Background 2
+                    body.classList.add('mobile');
+                    console.log('Background mudou para Mobile (Background2)');
+                } else {
+                    // Dispositivos maiores - Background 1
+                    body.classList.add('desktop');
+                    console.log('Background mudou para Desktop (Background1)');
+                }
+            }
+            
+            // Atualizar background no carregamento
+            updateBackground();
+            
+            // Atualizar background quando redimensionar a tela
+            window.addEventListener('resize', function() {
+                updateBackground();
+            });
+            
+            // Debug: verificar se as imagens existem
+            function checkImages() {
+                const img1 = new Image();
+                const img2 = new Image();
+                
+                img1.onload = function() {
+                    console.log('Background1.png carregado com sucesso');
+                };
+                img1.onerror = function() {
+                    console.error('Erro ao carregar Background1.png - verifique se o arquivo existe em img/');
+                };
+                img1.src = 'img/Background1.png';
+                
+                img2.onload = function() {
+                    console.log('Background2.png carregado com sucesso');
+                };
+                img2.onerror = function() {
+                    console.error('Erro ao carregar Background2.png - verifique se o arquivo existe em img/');
+                };
+                img2.src = 'img/Background2.png';
+            }
+            
+            // Verificar imagens
+            checkImages();
+            
             // Elementos DOM
             const copyBtn = document.getElementById('copyBtn');
             const pixKey = document.getElementById('pixKey');
